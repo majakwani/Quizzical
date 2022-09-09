@@ -137,12 +137,11 @@ main{
 }
 
 .loadingContainer{
-  width: 550px;
-  height: 550px;
+  width: 650px;
+  height: 650px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aquamarine;
 }
 
 .circle{
@@ -150,7 +149,6 @@ main{
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: black;
 }
 
 .one, .two, .three{
@@ -159,12 +157,15 @@ main{
 }
 .one{
   animation-name: animationOne;
+  background-color: #97c9fc;
 }
 .two{
-  animation-name: animationTwo
+  animation-name: animationTwo;
+  background-color: #fff49e;
 }
 .three{
-  animation-name: animationThree
+  animation-name: animationThree;
+  background-color: #97c9fc;
 }
 
 @keyframes animationOne {

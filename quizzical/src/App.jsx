@@ -7,11 +7,7 @@ export default function App(){
   const [gameStart, setGameStart] = React.useState(false)
 
   function changePage(){
-    setGameStart(!gameStart)
-  }
-
-  function changeLoadingStatus(){
-    setLoadingStatus(!loadingStatus)
+    setGameStart(current => !current)
   }
 
   return (
