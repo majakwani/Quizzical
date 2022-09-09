@@ -20,10 +20,10 @@ export default function Question(props){
                 {props.question}
             </p>
             <div className="choiceContainer">
-                <button style = {{backgroundColor: props.choices[0].isClicked ? "D6DBF5" : "transparent"}} onClick={()=> props.clickEvent(props.choices[0].choiceId)}>{props.choices[0].choice}</button>
-                <button style = {{backgroundColor: props.choices[1].isClicked ? "D6DBF5" : "transparent"}} onClick={()=> props.clickEvent(props.choices[1].choiceId)}>{props.choices[1].choice}</button>
-                <button style = {{backgroundColor: props.choices[2].isClicked ? "D6DBF5" : "transparent"}} onClick={()=> props.clickEvent(props.choices[2].choiceId)}>{props.choices[2].choice}</button>
-                <button style = {{backgroundColor: props.choices[3].isClicked ? "D6DBF5" : "transparent"}} onClick={()=> props.clickEvent(props.choices[3].choiceId)}>{props.choices[3].choice}</button>
+                <button style = {{backgroundColor: props.choices[0].isClicked ? "D6DBF5" : "transparent"}} onClick={()=> props.clickEvent(props.choices[0].choiceId, props.questionId)}>{props.choices[0].choice}</button>
+                <button style = {{backgroundColor: props.choices[1].isClicked ? "D6DBF5" : "transparent"}} onClick={()=> props.clickEvent(props.choices[1].choiceId, props.questionId)}>{props.choices[1].choice}</button>
+                <button style = {{backgroundColor: props.choices[2].isClicked ? "D6DBF5" : "transparent"}} onClick={()=> props.clickEvent(props.choices[2].choiceId, props.questionId)}>{props.choices[2].choice}</button>
+                <button style = {{backgroundColor: props.choices[3].isClicked ? "D6DBF5" : "transparent"}} onClick={()=> props.clickEvent(props.choices[3].choiceId, props.questionId)}>{props.choices[3].choice}</button>
             </div>
                 <div className="line"></div>
             </div>

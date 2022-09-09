@@ -4,18 +4,21 @@ import Quiz from '../components/Quiz'
 
 export default function App(){
 
-  const [firstPage, setFirstPage] = React.useState(true)
+  const [gameStart, setGameStart] = React.useState(false)
 
   function changePage(){
-    setFirstPage(!firstPage)
+    setGameStart(!gameStart)
+  }
+
+  function changeLoadingStatus(){
+    setLoadingStatus(!loadingStatus)
   }
 
   return (
     <main>
-        {firstPage && <FirstPage eventHandler = {changePage} />}
-        {!firstPage && 
-        <Quiz ques />
-        }
+        {!gameStart && <FirstPage eventHandler = {changePage} />}
+        
+        {gameStart && <Quiz /> }
         
     </main>
   )

@@ -83,10 +83,10 @@ main{
   height: 70px;
   margin-top: 30px;
   margin-inline: 110px;
-  text-align: center;
 }
 
 .question > p{
+  width: 450px;
   font-family: var(--karla);
   font-weight: 700;
   font-size: 16px;
@@ -134,4 +134,72 @@ main{
   color: #F5F7FB;
   margin-inline: 266px;
   margin-top: 30px;
+}
+
+.loadingContainer{
+  width: 550px;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aquamarine;
+}
+
+.circle{
+  margin-inline: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.one, .two, .three{
+  animation-duration: 0.9s;
+  animation-iteration-count: infinite;
+}
+.one{
+  animation-name: animationOne;
+}
+.two{
+  animation-name: animationTwo
+}
+.three{
+  animation-name: animationThree
+}
+
+@keyframes animationOne {
+  0% {width: 30px;
+  height: 30px;}
+  25% {width: 37px;
+  height: 37px;}
+  50%{width: 30px;
+      height: 30px;}
+  75%{width: 30px;
+      height: 30px;}
+  100%{width: 30px;
+      height: 30px;}
+}
+@keyframes animationTwo {
+  0% {width: 30px;
+      height: 30px;}
+      25% {width: 30px;
+      height: 30px;}
+      50%{width: 37px;
+          height: 37px;}
+      75%{width: 30px;
+          height: 30px;}
+      100%{width: 30px;
+          height: 30px;}
+}
+@keyframes animationThree {
+  0% {width: 30px;
+      height: 30px;}
+      25% {width: 30px;
+      height: 30px;}
+      50%{width: 30px;
+          height: 30px;}
+      75%{width: 37px;
+          height: 37px;}
+      100%{width: 30px;
+          height: 30px;}
 }
