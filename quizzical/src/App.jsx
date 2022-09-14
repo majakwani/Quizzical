@@ -14,7 +14,9 @@ export default function App(){
     <main>
         {!gameStart && <FirstPage eventHandler = {changePage} />}
         
-        {gameStart && <Quiz /> }
+        {gameStart && <Quiz 
+        resetGame = {changePage}
+        /> }
         
     </main>
   )
