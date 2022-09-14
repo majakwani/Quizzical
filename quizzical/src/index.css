@@ -204,3 +204,28 @@ main{
       100%{width: 30px;
           height: 30px;}
 }
+
+.score{
+  font-family: var(--inter);
+  font-weight: 700;
+  font-size: 12.8px;
+  line-height: 15px;
+  color: #293264; 
+  margin-top: 27px;
+  margin-left: 160px;
+}
+
+.score > button{
+  cursor: pointer;
+  width: 104px;
+  height: 30px;
+  background-color: #4D5B9E;
+  border-radius: 10px;
+  font-family: var(--inter);
+  font-weight: 600;
+  font-size: 10.24px;
+  line-height: 12px;
+  color: #F5F7FB;
+  border: none;
+  margin-left: 20px;
+}
