@@ -64,8 +64,6 @@ export default function Quiz(props) {
       })
     );
   }
-  // console.log(quizData);
-  console.log(selectedAnswerData);
 
   // creating components for every data items in every index of the state array.
   const questionData = quizData.map((properties) => {
@@ -110,7 +108,7 @@ export default function Quiz(props) {
         }
       {!checkAnswer && loadingStatus && <Loading />}
       {!checkAnswer && !loadingStatus && questionData}
-      {!checkAnswer && <button type="button" onClick={displayAnswer}>Check answers</button>
+      {!checkAnswer && !loadingStatus &&<button type="button" onClick={displayAnswer}>Check answers</button>
 }
     </section>
   );
