@@ -2,13 +2,13 @@ import React from "react";
 import { nanoid } from "nanoid";
 
 export default function Question(props) {
-  let count = props.questionData.index
-  const styles = {
-    backgroundColor: "",
-    color: "yellow"
-  };
+  let index = props.questionData.index
+  
   const buttons = props.questionData.answers.map((answer) => {
-    styles.backgroundColor = answer === props.answerData[count].value ? 
+    const styles = {
+      backgroundColor: "transparent",
+    };
+    styles.backgroundColor = answer === props.answerData[index].value ? 
     "#D6DBF4" :
     "transparent"
       return (
@@ -22,7 +22,7 @@ export default function Question(props) {
       </button>
     );
   });
-  count += 1
+  index += 1
   return (
     <div className="question">
       <p>{props.questionData.question}</p>
