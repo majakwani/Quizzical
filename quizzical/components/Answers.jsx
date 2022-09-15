@@ -7,6 +7,15 @@ export default function Answers(props) {
     const styles = {
       backgroundColor: "transparent"
     }
+    if(props.answerData[index].value === answer && props.answerData[index].value !== props.questionData.correct_answer){
+      styles.backgroundColor = "#F8BCBC"
+    }
+    else if(answer === props.questionData.correct_answer){
+      styles.backgroundColor = "#94D7A2"
+    }
+    else{
+      styles.backgroundColor = "transparent"
+    }
     return (
       <button type="button" key={nanoid()} style = {styles}>
         {answer}
