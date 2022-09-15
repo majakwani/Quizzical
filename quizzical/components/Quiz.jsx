@@ -8,7 +8,8 @@ export default function Quiz(props) {
   const [quizData, setQuizData] = React.useState([]); //stores info about question, all answer choices, correct answer choice
   const [loadingStatus, setLoadingStatus] = React.useState(false); // is created to render loading screen on status = true
   const [selectedAnswerData, setSelectedAnswerData] = React.useState([]); // stores info about answer, question id, answer clicked against that question id
-  const [checkAnswer, setCheckAnswer] = React.useState(false)
+  const [checkAnswer, setCheckAnswer] = React.useState(false);
+  const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
     fetchData();
@@ -23,7 +24,7 @@ export default function Quiz(props) {
       const dataArr = await fetchedData.json();
       let count = -1;
       const dataToPass = dataArr.results.map((data) => {
-        count += 1
+        count += 1;
         // adding correct answer choice in incorrect answers array
         data.incorrect_answers.push(data.correct_answer);
         //shuffling the answer choices array
@@ -35,14 +36,14 @@ export default function Quiz(props) {
           answers: data.incorrect_answers,
           correct_answer: data.correct_answer,
           id: nanoid(),
-          index: count
+          index: count,
         };
       });
       setQuizData(dataToPass);
       const updatedArr = dataToPass.map((data) => {
         return {
           questionId: data.id,
-          value: ""
+          value: "",
         };
       });
       setSelectedAnswerData(updatedArr);
@@ -77,39 +78,65 @@ export default function Quiz(props) {
     );
   });
 
-  const answerData = quizData.map(properties => {
+  const answerData = quizData.map((properties) => {
     return (
-      <Answers 
+      <Answers
         key={properties.id}
         questionData={properties}
         answerData={selectedAnswerData}
       />
-    )
-  })
+    );
+  });
 
-  function displayAnswer(){
-    setCheckAnswer(true)
+  function checkForAnswers() {
+    return selectedAnswerData.every((element) => element.value !== "");
   }
 
-  function resetGame(){
-    setQuizData([])
-    setSelectedAnswerData([])
-    setCheckAnswer(false)
-    props.resetGame()
+  function correctAnswer() {
+    for (let i = 0; i < 5; i++) {
+      if (selectedAnswerData[i].value === quizData[i].correct_answer) {
+        setCount((current) => current + 1);
+      } else {
+        continue;
+      }
+    }
   }
 
+  function displayAnswer() {
+    if (checkForAnswers()) {
+      setCheckAnswer(true);
+      correctAnswer();
+    } else {
+      alert("Select answer choice for every question");
+    }
+    return;
+  }
+
+  function resetGame() {
+    setQuizData([]);
+    setSelectedAnswerData([]);
+    setCheckAnswer(false);
+    setCheckAnswer(false);
+    props.resetGame();
+  }
   return (
     <section className="quiz">
       {checkAnswer && answerData}
-      {checkAnswer &&  <div className="score">
-        <span>You score 3/5 correct answers</span>
-        <button type="button" onClick={resetGame}>Play again</button>
+      {checkAnswer && checkForAnswers() && (
+        <div className="score">
+          <span>You score {count}/5 correct answers</span>
+          <button type="button" onClick={resetGame}>
+            Play again
+          </button>
         </div>
-        }
+      )}
       {!checkAnswer && loadingStatus && <Loading />}
       {!checkAnswer && !loadingStatus && questionData}
-      {!checkAnswer && !loadingStatus &&<button type="button" onClick={displayAnswer}>Check answers</button>
-}
+      {!checkAnswer && !loadingStatus && (
+        <button type="button" onClick={displayAnswer}>
+          Check answers
+        </button>
+      )}
     </section>
   );
 }
